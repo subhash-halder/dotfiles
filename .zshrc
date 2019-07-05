@@ -9,12 +9,13 @@ export VISUAL='nvim'
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_MODE="nerdfont-complete"
-POWERLEVEL9K_DISABLE_RPROMPT=true
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="▶ "
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+ZSH_THEME="gnzh"
+# ZSH_THEME="powerlevel9k/powerlevel9k"
+# POWERLEVEL9K_MODE="nerdfont-complete"
+# POWERLEVEL9K_DISABLE_RPROMPT=true
+# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="▶ "
+# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
 # export NVIM_NODE_HOST_DEBUG=true
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -68,7 +69,7 @@ export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$HOME/.dotfiles/scripts
+export PATH=$PATH:$HOME/.my-scripts
 export PATH=$PATH:$HOME/bin
 
 export GOPATH=$HOME/Documents/work/go
@@ -114,10 +115,10 @@ export LC_CTYPE=en_IN.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-alias zshconfig="nvim ~/.dotfiles/zsh/zshrc.symlink"
-alias tmuxconfig="nvim ~/.dotfiles/tmux/tmux.conf.symlink"
-alias nvimconfig="nvim ~/.dotfiles/config/nvim/init.vim"
-alias dotfiles="/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+alias zshconfig="nvim $HOME/.zshrc"
+alias tmuxconfig="nvim $HOME/.tmux.conf"
+alias nvimconfig="nvim $HOME/.config/nvim/init.vim"
+alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias c="clear"
 alias vim="nvim"
 

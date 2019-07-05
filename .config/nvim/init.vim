@@ -112,7 +112,7 @@ set foldmethod=indent
 set foldlevelstart=99
 " Persistent undo
 set undofile
-set undodir=~/.dotfiles/config/nvim/undo
+set undodir=$HOME/.config/nvim/undo
 " wrapping of lint
 set wrap linebreak nolist
 set undolevels=1000
@@ -148,7 +148,7 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#file#enable_buffer_path = 1
 let g:echodoc#enable_at_startup = 1
 let g:neosnippet#enable_completed_snippet = 1
-let g:neosnippet#snippets_directory='~/.dotfiles/config/nvim/snippets'
+let g:neosnippet#snippets_directory='$HOME/.config/nvim/snippets'
 " Use tern_for_vim.
 "let g:tern#command = ["tern"]
 "let g:tern#arguments = ["--persistent"]
