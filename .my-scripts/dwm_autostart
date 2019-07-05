@@ -1,0 +1,10 @@
+feh --randomize --bg-fill ~/Pictures/Wallpapers/* &
+xcompmgr -nf &
+xss-lock -- lockscreen &
+dunst > /dev/null 2>&1 &
+
+while true; do
+    dwm_status_bar
+     sleep 10s    # Update time every ten seconds
+done &
+
