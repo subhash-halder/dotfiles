@@ -1,5 +1,6 @@
 feh --randomize --bg-fill ~/Pictures/Wallpapers/* &
 xcompmgr -nf &
+sxhkd &
 xss-lock -- lockscreen &
 dunst > /dev/null 2>&1 &
 

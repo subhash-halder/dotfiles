@@ -66,6 +66,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/Documents/work/go/bin
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
