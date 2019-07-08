@@ -29,6 +29,7 @@ Plug 'mattn/emmet-vim'
 " JavaScript plugins
 Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
 " Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'elzr/vim-json', { 'for': 'json' }
