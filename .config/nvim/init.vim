@@ -72,7 +72,7 @@ let g:LanguageClient_serverCommands = {
     \ 'cpp': ['/usr/bin/clangd'],
     \ 'c': ['/usr/bin/clangd'],
     \ 'python': ['/usr/bin/pyls'],
-    \ 'go': ['$HOME/Documents/work/go/bin/gopls'],
+    \ 'go': ['$HOME/Documents/work/go/bin/gopls', '-mode=stdio'],
     \ }
  
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
