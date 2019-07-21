@@ -215,8 +215,11 @@ nmap <leader>v :call ToggleAllSplits()<cr>
 nmap <C-s> :w<cr>
 nmap <C-q> :q<cr>
 imap <C-s> <Esc>:w<cr>
-nnoremap <Leader>s :%s/\<<C-r><C-w>\>/
+nnoremap <Leader>s :%s/\v<<C-r><C-w>>/
+nnoremap / /\v\c
+vnoremap / /\v\c
 
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 map <leader>ev :e! ~/.config/nvim/init.vim<cr>
 
