@@ -7,4 +7,4 @@
 # scrot -m -z /tmp/base.png &&
 # convert /tmp/base.png -blur 5x3 /tmp/locked.png
 
-i3lock -e -f -c 000000 -i /home/subhash/Pictures/Lockscreen/think-positively-wallpaper-for-1366x768-67-555.png
+i3lock -e -f -c 000000 -i /home/subhash/Pictures/Lockscreen/active.png

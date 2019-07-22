@@ -4,8 +4,6 @@ export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
-export EDITOR='nvim'
-export VISUAL='nvim'
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -59,21 +57,8 @@ ZSH_THEME="gnzh"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # HIST_STAMPS="mm/dd/yyyy"
 
-# dwm window manager fix for java program
-export _JAVA_AWT_WM_NONREPARENTING=1
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/Documents/work/go/bin
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-export PATH=$PATH:$HOME/.my-scripts
-export PATH=$PATH:$HOME/bin
-
-export GOPATH=$HOME/Documents/work/go
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -90,8 +75,6 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # its required for tmux
-export LANG=en_IN.UTF-8
-export LC_CTYPE=en_IN.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -116,14 +99,6 @@ export LC_CTYPE=en_IN.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-alias zshconfig="nvim $HOME/.zshrc"
-alias tmuxconfig="nvim $HOME/.tmux.conf"
-alias nvimconfig="nvim $HOME/.config/nvim/init.vim"
-alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
-alias c="clear"
-alias vim="nvim"
-
-ulimit -n 2048
 
 function tmx() {
     tmux new-session \; \
