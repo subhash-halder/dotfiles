@@ -1,3 +1,8 @@
 super + x
   xset dpms force off
-  
+super + shift + m
+  cmus-remote -u
+super + shift + {p,n}
+  cmus-remote -{r,n}
+super + ctrl + {p,n}
+  cmus-remote -k {-,+}1m

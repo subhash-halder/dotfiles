@@ -5,6 +5,8 @@ export BROWSER="qutebrowser"
 export READER="zathura"
 export FILE="vifm"
 
+export TERM="xterm-256color"
+
 # dwm window manager fix for java program
 export _JAVA_AWT_WM_NONREPARENTING=1
 

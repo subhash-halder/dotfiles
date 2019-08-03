@@ -44,6 +44,8 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 Plug 'jiangmiao/auto-pairs'
 
+Plug 'rust-lang/rust.vim'
+
 
 Plug 'Shougo/echodoc'
 "Plug 'carlitux/deoplete-ternjs'
@@ -73,6 +75,7 @@ let g:LanguageClient_serverCommands = {
     \ 'c': ['/usr/bin/clangd'],
     \ 'python': ['/usr/bin/pyls'],
     \ 'go': ['$HOME/Documents/work/go/bin/gopls', '-mode=stdio'],
+    \ 'rust': ['rls'],
     \ }
  
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
@@ -134,7 +137,8 @@ if has('nvim')
   tnoremap <C-j> <c-\><c-n><c-w>j
   tnoremap <C-k> <c-\><c-n><c-w>k
   tnoremap <C-l> <c-\><c-n><c-w>l
-  tnoremap <C-[> <c-\><c-n><cr>
+  " issue when terminal has vi keybinding
+  " tnoremap <C-[> <c-\><c-n><cr>
    " Change split focus
   nnoremap <C-h> <c-w>h
   nnoremap <C-j> <c-w>j
@@ -219,7 +223,9 @@ nnoremap <Leader>s :%s/\v<<C-r><C-w>>/
 nnoremap / /\v\c
 vnoremap / /\v\c
 
-command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+" sometime required for autocompletion to work
+command! LanguageClientRestart :execute ':LanguageClientStop' | :execute ':LanguageClientStart'
 
 map <leader>ev :e! ~/.config/nvim/init.vim<cr>
 
