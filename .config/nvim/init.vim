@@ -59,7 +59,7 @@ Plug 'ruanyl/vim-fixmyjs'
 Plug 'sbdchd/neoformat'
 "Plug 'honza/vim-snippets'
 Plug 'neomake/neomake'
-Plug 'jaawerth/neomake-local-eslint-first'
+"Plug 'jaawerth/neomake-local-eslint-first'
 "Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-fugitive' " the ultimate git helper
 Plug 'tpope/vim-surround'
@@ -90,13 +90,14 @@ set mouse=a
 " Json file to show the quotes
 let g:javascript_plugin_flow = 1
 let g:vim_json_syntax_conceal = 0
-let g:prettier#config#tab_width = 2
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#quickfix_enabled = 0
-let g:prettier#autoformat = 0
-let g:prettier#config#trailing_comma = 'es5'
-let g:neoformat_enabled_javascript = ['prettier']
-let g:prettier#exec_cmd_async = 1
+"let g:prettier#config#tab_width = 2
+"let g:prettier#config#bracket_spacing = 'true'
+"let g:prettier#quickfix_enabled = 0
+"let g:prettier#autoformat = 0
+"let g:prettier#config#trailing_comma = 'es5'
+
+let g:neoformat_enabled_javascript = ['eslint_d']
+"let g:prettier#exec_cmd_async = 1
 augroup fmt
   autocmd!
   autocmd BufWritePre * Neoformat
@@ -302,7 +303,7 @@ set timeoutlen=500
 "let g:syntastic_check_on_wq = 0
 "let g:syntastic_javascript_checkers = ['eslint']
 "let g:syntastic_javascript_eslint_exe = 'npm run lint --'
-let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_enabled_makers = ['eslint_d']
 "let g:neomake_scss_enabled_makers = ['csslint']
 call neomake#configure#automake('nrwi', 500)
 " let g:neomake_open_list = 3
