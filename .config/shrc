@@ -5,7 +5,10 @@ export BROWSER="qutebrowser"
 export READER="zathura"
 export FILE="vifm"
 
-export TERM="xterm-256color"
+export HISTFILESIZE=100000
+export HISTSIZE=100000
+
+# export TERM="xterm-256color"
 
 # dwm window manager fix for java program
 export _JAVA_AWT_WM_NONREPARENTING=1
@@ -20,6 +23,7 @@ export PATH=$PATH:$HOME/.my-scripts
 export PATH=$PATH:$HOME/bin
 
 export GOPATH=$HOME/Documents/work/go
+export GO111MODULE="on"
 
 
 export LANG=en_IN.UTF-8
