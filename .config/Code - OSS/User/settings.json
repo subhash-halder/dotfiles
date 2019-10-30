@@ -1,0 +1,35 @@
+{
+    "go.useLanguageServer": true,
+    "editor.minimap.enabled": false,
+    "workbench.activityBar.visible": true,
+    "workbench.statusBar.visible": true,
+    "breadcrumbs.enabled": false,
+    "workbench.colorTheme": "Dracula",
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/bin/nvim",
+    "window.menuBarVisibility": "toggle",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "j"],
+            "commands": [":tabprevious"]
+        },
+        {
+            "before": ["<leader>", "k"],
+            "commands": [":tabnext"]
+        },
+        {
+            "before": ["<leader>", "k"],
+            "commands": [":tabnext"]
+        },
+    ],
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-b>": false
+    },
+    "vim.leader": "<space>",
+    "editor.lineNumbers": "relative",
+    "eslint.autoFixOnSave": true
+}
