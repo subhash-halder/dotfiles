@@ -1,7 +1,7 @@
 {
     "go.useLanguageServer": true,
     "editor.minimap.enabled": false,
-    "workbench.activityBar.visible": true,
+    "workbench.activityBar.visible": false,
     "workbench.statusBar.visible": true,
     "breadcrumbs.enabled": false,
     "workbench.colorTheme": "Dracula",
@@ -31,5 +31,11 @@
     },
     "vim.leader": "<space>",
     "editor.lineNumbers": "relative",
-    "eslint.autoFixOnSave": true
+    "eslint.autoFixOnSave": true,
+    "window.zoomLevel": 0,
+    "editor.fontSize": 12,
+    "debug.console.fontSize": 12,
+    "markdown.preview.fontSize": 12,
+    "terminal.integrated.fontSize": 12,
+    "vim.easymotionMarkerFontSize": "12"
 }

@@ -20,3 +20,7 @@ export PS1="╭─\[\033[32m\]\u@\h \[\033[1;34m\]\w \[\033[31m\]\$(shwoGitBranc
 set -o vi
 
 . $HOME/.config/shrc
+
+if [ -f $HOME/.private_env ]; then
+  . $HOME/.private_env
+fi

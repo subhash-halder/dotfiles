@@ -16,8 +16,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'dracula/vim'
 Plug 'itchyny/lightline.vim'
 "Plug 'phanviet/vim-monokai-pro'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Yggdroot/indentLine'
 "Plug 'cloudhead/neovim-fuzzy'
@@ -67,7 +67,6 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 " Initialize plugin system
 call plug#end()
 
-
 let g:LanguageClient_serverCommands = {
     \ 'javascript': ['npx', 'flow', 'lsp'],
     \ 'javascript.jsx': ['npx', 'flow', 'lsp'],
@@ -109,7 +108,7 @@ set scrolloff=10
 " Reads when file changes
 set autoread 
 "let g:spacevim_enable_guicolors=0
-let g:airline#extensions#tabline#enabled=1
+"let g:airline#extensions#tabline#enabled=1
 "let g:airline#extensions#tabline#formatter='unique_tail'
 " Map leader to ,
 let mapleader = ' '
@@ -190,6 +189,12 @@ endif
 " let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 " let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
+fun! LanguageClientRestart()
+  :LanguageClientStop
+  sleep 1000ms
+  :LanguageClientStart
+endfun
+
 fun! FZFFileFiender()
   let is_git = system('git status')
   if v:shell_error
@@ -226,7 +231,8 @@ vnoremap / /\v\c
 
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 " sometime required for autocompletion to work
-command! LanguageClientRestart :execute ':LanguageClientStop' | :execute ':LanguageClientStart'
+" command! LanguageClientRestart :execute ':LanguageClientStop' | :execute ':LanguageClientStart'
+command! LanguageClientRestart : call LanguageClientRestart()<cr>
 
 map <leader>ev :e! ~/.config/nvim/init.vim<cr>
 
@@ -263,8 +269,8 @@ let NERDTreeQuitOnOpen=1
 let g:NERDTreeIgnore=['.git$[[dir]]', '.swp', '.DS_Store', '\~$']
 let g:enable_bold_font = 1
 let g:enable_italic_font = 1
-let g:airline_theme = "hybrid"
-let g:airline_powerline_fonts = 1
+"let g:airline_theme = "hybrid"
+"let g:airline_powerline_fonts = 1
 let g:indentLine_char = '|'
 
 " Start autocompletion after 2 chars
@@ -274,7 +280,7 @@ let g:indentLine_char = '|'
 " Don't show YCM's preview window 
 set completeopt-=preview "Disable the preview window
 "let g:ycm_add_preview_to_completeopt = 0
-let g:airline_theme='onedark'
+"let g:airline_theme='onedark'
 set background=dark
 "colorscheme hybrid_material
 "colorscheme subtle_dark
@@ -322,5 +328,6 @@ set colorcolumn=80
 set number relativenumber
 set nonumber norelativenumber  " turn hybrid line numbers off
 set number! relativenumber!    " toggle hybrid line numbersk
-hi! Normal ctermbg=NONE guibg=NONE
-hi! NonText ctermbg=NONE guibg=NONE
+" for transparancy
+"hi! Normal ctermbg=NONE guibg=NONE
+"hi! NonText ctermbg=NONE guibg=NONE
