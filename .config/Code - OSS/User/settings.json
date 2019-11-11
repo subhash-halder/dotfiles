@@ -1,7 +1,7 @@
 {
     "go.useLanguageServer": true,
     "editor.minimap.enabled": false,
-    "workbench.activityBar.visible": false,
+    "workbench.activityBar.visible": true,
     "workbench.statusBar.visible": true,
     "breadcrumbs.enabled": false,
     "workbench.colorTheme": "Dracula",
@@ -37,5 +37,6 @@
     "debug.console.fontSize": 12,
     "markdown.preview.fontSize": 12,
     "terminal.integrated.fontSize": 12,
-    "vim.easymotionMarkerFontSize": "12"
+    "vim.easymotionMarkerFontSize": "12",
+    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Siji'"
 }

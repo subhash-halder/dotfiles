@@ -1,0 +1,3 @@
+xcompmgr -nf &
+sxhkd &
+dunst > /dev/null 2>&1 &
