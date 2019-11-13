@@ -8,7 +8,7 @@ https://www.atlassian.com/git/tutorials/dotfiles
 
 ## Program used
 
-sudo pacman -S neovim tmux qutebrowser firefox chromium fzf vifm zathura feh xcompmgr sxhkd xss-lock dunst cmus
+sudo pacman -S neovim tmux qutebrowser firefox chromium fzf vifm zathura feh xcompmgr sxhkd xss-lock dunst cmus termite
 
 dwm
 st

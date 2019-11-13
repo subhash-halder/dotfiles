@@ -1,6 +1,6 @@
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="st"
+export TERMINAL="termite"
 export BROWSER="qutebrowser"
 export READER="zathura"
 export FILE="vifm"
