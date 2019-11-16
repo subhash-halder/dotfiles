@@ -24,3 +24,8 @@ set -o vi
 if [ -f $HOME/.private_env ]; then
   . $HOME/.private_env
 fi
+
+if [ -d /usr/share/fzf/ ]; then
+  source /usr/share/fzf/completion.bash
+  source /usr/share/fzf/key-bindings.bash
+fi
