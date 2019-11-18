@@ -1,118 +1,124 @@
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.config/nvim/plugged')
-
-" On-demand loading
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-"Plug 'christoomey/vim-tmux-navigator'
-"Plug 'kristijanhusak/vim-hybrid-material'
-"Plug 'kadekillary/subtle_solo'
-"Plug 'aradunovic/perun.vim'
-"Plug 'morhetz/gruvbox'
-"Plug 'NLKNguyen/papercolor-theme'
-"Plug 'lifepillar/vim-solarized8'
-"Plug 'joshdick/onedark.vim'
 Plug 'dracula/vim'
 Plug 'itchyny/lightline.vim'
-"Plug 'phanviet/vim-monokai-pro'
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Yggdroot/indentLine'
-"Plug 'cloudhead/neovim-fuzzy'
-"Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
-" HTML plugins
-Plug 'mattn/emmet-vim'
-" JavaScript plugins
 Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'jelera/vim-javascript-syntax', { 'for': 'javascript' }
-" Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+
 Plug 'elzr/vim-json', { 'for': 'json' }
-"Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
-"
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-
-
-Plug 'jiangmiao/auto-pairs'
-
-Plug 'rust-lang/rust.vim'
-
-
-Plug 'Shougo/echodoc'
-"Plug 'carlitux/deoplete-ternjs'
-"Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-"Plug 'wokalski/autocomplete-flow'
-" Plug 'flowtype/vim-flow', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm i -g flow-bin' } 
-"Plug 'SirVer/ultisnips'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'ruanyl/vim-fixmyjs'
-Plug 'sbdchd/neoformat'
-"Plug 'honza/vim-snippets'
-Plug 'neomake/neomake'
-"Plug 'jaawerth/neomake-local-eslint-first'
-"Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-fugitive' " the ultimate git helper
-Plug 'tpope/vim-surround'
 Plug 'tmux-plugins/vim-tmux-focus-events'
-" Initialize plugin system
 call plug#end()
 
-let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['npx', 'flow', 'lsp'],
-    \ 'javascript.jsx': ['npx', 'flow', 'lsp'],
-    \ 'cpp': ['/usr/bin/clangd'],
-    \ 'c': ['/usr/bin/clangd'],
-    \ 'python': ['/usr/bin/pyls'],
-    \ 'go': ['$HOME/Documents/work/go/bin/gopls', '-mode=stdio'],
-    \ 'rust': ['rls'],
-    \ }
- 
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" " Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+" ---------- coc.nvim config start ------------"
+" coc config
+" if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <F2> <Plug>(coc-rename)
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+augroup fmt
+  autocmd!
+  autocmd BufWritePre *{go,rs,c,cpp} Format
+augroup END
+
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" ---------- coc.nvim config end ------------"
 
 set encoding=UTF-8
 set mouse=a
-"set guifont=Ubuntu_Mono_Nerd_Font_Complete:h11
 " Json file to show the quotes
-let g:javascript_plugin_flow = 1
 let g:vim_json_syntax_conceal = 0
-"let g:prettier#config#tab_width = 2
-"let g:prettier#config#bracket_spacing = 'true'
-"let g:prettier#quickfix_enabled = 0
-"let g:prettier#autoformat = 0
-"let g:prettier#config#trailing_comma = 'es5'
-
-let g:neoformat_enabled_javascript = ['eslint_d']
-"let g:prettier#exec_cmd_async = 1
-augroup fmt
-  autocmd!
-  autocmd BufWritePre * Neoformat
-augroup END
-" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
-"let g:user_emmet_install_global = 0
-"autocmd FileType html,css EmmetInstall
 set scrolloff=10
 " Reads when file changes
 set autoread 
-"let g:spacevim_enable_guicolors=0
-"let g:airline#extensions#tabline#enabled=1
-"let g:airline#extensions#tabline#formatter='unique_tail'
 " Map leader to ,
 let mapleader = ' '
-" imap jj <ESC>
 set foldmethod=indent
 set foldlevelstart=99
 " Persistent undo
@@ -146,54 +152,12 @@ if has('nvim')
   nnoremap <C-l> <c-w>l
 endif
 
-" make YCM compatible with UltiSnips 
-"let g:ycm_key_list_select_completion = ['<C-n>']
-"let g:ycm_key_list_previous_completion = ['<C-p>']
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#file#enable_buffer_path = 1
-let g:echodoc#enable_at_startup = 1
-let g:neosnippet#enable_completed_snippet = 1
-let g:neosnippet#snippets_directory='$HOME/.config/nvim/snippets'
-" Use tern_for_vim.
-"let g:tern#command = ["tern"]
-"let g:tern#arguments = ["--persistent"]
-" neosnippet disable runtime snippest
-"let g:neosnippet#disable_runtime_snippets = 1
 set noshowmode
-" Plugin key-mappings.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
-" SuperTab like snippets behavior.
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-"imap <expr><TAB>
-" \ pumvisible() ? "\<C-n>" :
-" \ neosnippet#expandable_or_jumpable() ?
-" \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
 " For conceal markers.
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
-" neo snippets end
-
-" better key bindings for UltiSnipsExpandTrigger
-" let g:UltiSnipsExpandTrigger = "<tab>"
-" let g:UltiSnipsJumpForwardTrigger = "<C-j>"
-" let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
-
-fun! LanguageClientRestart()
-  :LanguageClientStop
-  sleep 1000ms
-  :LanguageClientStart
-endfun
 
 fun! FZFFileFiender()
   let is_git = system('git status')
@@ -205,6 +169,7 @@ fun! FZFFileFiender()
 endfun
 
 let s:toggleAllSplitsStatus=0
+
 fun! ToggleAllSplits()
   if s:toggleAllSplitsStatus
     let s:toggleAllSplitsStatus=0
@@ -232,7 +197,6 @@ vnoremap / /\v\c
 command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 " sometime required for autocompletion to work
 " command! LanguageClientRestart :execute ':LanguageClientStop' | :execute ':LanguageClientStart'
-command! LanguageClientRestart : call LanguageClientRestart()<cr>
 
 map <leader>ev :e! ~/.config/nvim/init.vim<cr>
 
@@ -269,50 +233,15 @@ let NERDTreeQuitOnOpen=1
 let g:NERDTreeIgnore=['.git$[[dir]]', '.swp', '.DS_Store', '\~$']
 let g:enable_bold_font = 1
 let g:enable_italic_font = 1
-"let g:airline_theme = "hybrid"
-"let g:airline_powerline_fonts = 1
 let g:indentLine_char = '|'
 
-" Start autocompletion after 2 chars
-"let g:ycm_min_num_of_chars_for_completion = 2
-"let g:ycm_min_num_identifier_candidate_chars = 2
-"let g:ycm_enable_diagnostic_highlighting = 0
-" Don't show YCM's preview window 
 set completeopt-=preview "Disable the preview window
-"let g:ycm_add_preview_to_completeopt = 0
-"let g:airline_theme='onedark'
 set background=dark
-"colorscheme hybrid_material
-"colorscheme subtle_dark
-"colorscheme perun
-"colorscheme gruvbox
-"colorscheme PaperColor
-"colorscheme monokai_pro
-" colorscheme solarized8
 colorscheme dracula
-"colorscheme onedark
-"colorscheme pink-moon
-"colorscheme vimterial
 set termguicolors
 
 set cursorline       "hilight the line of the cursor
 set timeoutlen=500 
-" set laststatus=2 " show the satus line all the time
-
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-" eslint configuration
-"let g:syntastic_always_populate_loc_list = 0 
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_javascript_checkers = ['eslint']
-"let g:syntastic_javascript_eslint_exe = 'npm run lint --'
-let g:neomake_javascript_enabled_makers = ['eslint_d']
-"let g:neomake_scss_enabled_makers = ['csslint']
-call neomake#configure#automake('nrwi', 500)
-" let g:neomake_open_list = 3
 " Tab control
 filetype plugin indent on
 " show existing tab with 4 spaces width
