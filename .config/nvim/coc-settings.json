@@ -3,7 +3,7 @@
   "languageserver": {
     "flow": {
       "command": "npx",
-      "args": ["lsp"],
+      "args": ["flow", "lsp"],
       "filetypes": ["javascript", "javascriptreact", "javascript.jsx"],
       "initializationOptions": {},
       "requireRootPattern": true,
