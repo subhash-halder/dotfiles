@@ -10,12 +10,15 @@ Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'tpope/vim-fugitive' " the ultimate git helper
@@ -103,6 +106,7 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 augroup fmt
   autocmd!
   autocmd BufWritePre *{go,rs,c,cpp} Format
+  autocmd BufWritePre *{go,rs,c,cpp} OR
 augroup END
 
 
