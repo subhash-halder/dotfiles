@@ -120,11 +120,7 @@
         "command": "filesExplorer.cancelCut",
         "when": "explorerResourceCut && explorerViewletVisible && filesExplorerFocus && !inputFocus"
     },
-    {
-        "key": "ctrl+[",
-        "command": "hideSuggestWidget",
-        "when": "suggestWidgetVisible && textInputFocus"
-    },
+    
     {
         "key": "ctrl+[",
         "command": "keybindings.editor.clearSearchResults",

@@ -23,6 +23,10 @@
             "before": ["<leader>", "k"],
             "commands": [":tabnext"]
         },
+        {
+            "before": ["<C-k>"],
+            "commands": ["editor.action.showHover"]
+        },
     ],
     "vim.handleKeys": {
         "<C-a>": false,
@@ -33,10 +37,5 @@
     "editor.lineNumbers": "relative",
     "eslint.autoFixOnSave": true,
     "window.zoomLevel": 0,
-    "editor.fontSize": 12,
-    "debug.console.fontSize": 12,
-    "markdown.preview.fontSize": 12,
-    "terminal.integrated.fontSize": 12,
-    "vim.easymotionMarkerFontSize": "12",
-    "editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Siji'"
+    "editor.fontFamily": "'MesloLGS Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Siji'"
 }
