@@ -8,7 +8,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf.vim'
-Plug 'airblade/vim-gitgutter'
+" Plug 'airblade/vim-gitgutter'
 Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -19,12 +19,14 @@ Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
 
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'tpope/vim-fugitive' " the ultimate git helper
 Plug 'tmux-plugins/vim-tmux-focus-events'
 call plug#end()
 
+let mapleader = ' '
 " ---------- coc.nvim config start ------------"
 " coc config
 " if hidden is not set, TextEdit might fail.
@@ -69,8 +71,8 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> <leader>p <Plug>(coc-diagnostic-prev)
+nmap <silent> <leader>n <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -105,13 +107,35 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 augroup fmt
   autocmd!
-  autocmd BufWritePre *{go,rs,c,cpp} Format
-  autocmd BufWritePre *{go,rs,c,cpp} OR
+  autocmd BufWritePre *{.go,.rs,.c,.cpp} Format
+  autocmd BufWritePre *{.go,.rs,.c,.cpp} OR
 augroup END
 
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+let g:lightline = {
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'gitbranch', 'gitchanges', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'LightlineGitBranch',
+  \   'gitchanges': 'LightlineGitChanges',
+  \ }
+\ }
+
+function! LightlineGitBranch() 
+  let status = get(g:, 'coc_git_status', '')
+  return  status
+endfunction
+
+function! LightlineGitChanges()
+  let status = get(b:, 'coc_git_status', '')
+  return  status
+endfunction
+
 " ---------- coc.nvim config end ------------"
 
 set encoding=UTF-8
@@ -122,7 +146,6 @@ set scrolloff=10
 " Reads when file changes
 set autoread 
 " Map leader to ,
-let mapleader = ' '
 set foldmethod=indent
 set foldlevelstart=99
 " Persistent undo
@@ -188,8 +211,8 @@ endfun
 
 nmap <C-p> :call FZFFileFiender()<cr>
 nmap <leader>b :Buffer<cr>
-nmap <leader>n :lnext<cr>
-nmap <leader>p :lprevious<cr>
+"nmap <leader>n :lnext<cr>
+"nmap <leader>p :lprevious<cr>
 nmap <leader>v :call ToggleAllSplits()<cr>
 nmap <C-s> :w<cr>
 nmap <C-q> :q<cr>
