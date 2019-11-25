@@ -8,10 +8,9 @@ Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf.vim'
-" Plug 'airblade/vim-gitgutter'
 Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
 Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
+Plug 'ianks/vim-tsx'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
@@ -23,6 +22,7 @@ Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
 
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'tpope/vim-fugitive' " the ultimate git helper
+Plug 'tpope/vim-surround'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 call plug#end()
 
@@ -71,8 +71,8 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
-nmap <silent> <leader>p <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>n <Plug>(coc-diagnostic-next)
+nmap <silent> <S-F8> <Plug>(coc-diagnostic-prev)
+nmap <silent> <F8> <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
@@ -96,6 +96,10 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <F2> <Plug>(coc-rename)
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
@@ -113,16 +117,19 @@ augroup END
 
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set laststatus=2
+"set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
+"set statusline+=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
 
 let g:lightline = {
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'gitbranch', 'gitchanges', 'readonly', 'filename', 'modified' ] ]
+  \             [ 'gitbranch', 'gitchanges', 'readonly', 'filename', 'modified', 'cocstatus' ] ]
   \ },
   \ 'component_function': {
   \   'gitbranch': 'LightlineGitBranch',
   \   'gitchanges': 'LightlineGitChanges',
+  \   'cocstatus': 'coc#status',
   \ }
 \ }
 

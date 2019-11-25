@@ -1,4 +1,5 @@
 {
+  "tsserver.enableJavascript":false,
   "eslint.autoFixOnSave":true,
   "languageserver": {
     "flow": {

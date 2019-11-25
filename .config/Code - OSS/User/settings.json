@@ -35,7 +35,13 @@
     },
     "vim.leader": "<space>",
     "editor.lineNumbers": "relative",
-    "eslint.autoFixOnSave": true,
     "window.zoomLevel": 0,
-    "editor.fontFamily": "'MesloLGS Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Siji'"
+    "editor.fontFamily": "'MesloLGS Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Siji'",
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "eslint.autoFixOnSave": true
 }
