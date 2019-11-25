@@ -12,6 +12,7 @@
     },
     "golang": {
       "command": "gopls",
+      "args": ["-mode=stdio"],
       "rootPatterns": ["go.mod"],
       "filetypes": ["go"]
     },
