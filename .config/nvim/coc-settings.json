@@ -28,11 +28,6 @@
       "filetypes": ["sh"],
       "ignoredRootPaths": ["~"]
     },
-    "python": {
-      "command": "pyls",
-      "rootPatterns": [],
-      "filetypes": ["python"]
-    },
     "clangd": {
       "command": "clangd",
       "args": ["--background-index"],
