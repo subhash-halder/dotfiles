@@ -17,11 +17,6 @@
       "rootPatterns": ["go.mod"],
       "filetypes": ["go"]
     },
-    "rust": {
-      "command": "rls",
-      "rootPatterns": ["Cargo.toml"],
-      "filetypes": ["rust"]
-    },
     "bash": {
       "command": "bash-language-server",
       "args": ["start"],
