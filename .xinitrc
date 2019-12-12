@@ -5,4 +5,5 @@
     # No error logging
     #dwm >/dev/null 2>&1
 # done
-i3
+# i3
+dwm 2> ~/.dwm.log
