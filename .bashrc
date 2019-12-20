@@ -19,10 +19,17 @@ export PS1="╭─\[\033[32m\]\u@\h \[\033[1;34m\]\w \[\033[31m\]\$(shwoGitBranc
 # vim key binding
 set -o vi
 
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
+
 . $HOME/.config/shrc
 
 if [ -f $HOME/.private_env ]; then
   . $HOME/.private_env
+fi
+
+if [ -f $HOME/.git-compilation.bash ]; then
+  . $HOME/.git-compilation.bash
 fi
 
 if [ -d /usr/share/fzf/ ]; then
