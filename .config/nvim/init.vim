@@ -4,14 +4,15 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'dracula/vim'
+Plug 'rakr/vim-one'
 Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf.vim'
-Plug 'mxw/vim-jsx', { 'for': 'javascript.jsx' }
-Plug 'leafgarland/typescript-vim'
-Plug 'ianks/vim-tsx'
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx'] }
+Plug 'fatih/vim-go'
+Plug 'rust-lang/rust.vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx' ] }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-json', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-pairs', {'do': 'yarn install --frozen-lockfile'}
@@ -20,11 +21,13 @@ Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-git', {'do': 'yarn install --frozen-lockfile'}
 Plug 'neoclide/coc-highlight', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-rls', {'do': 'yarn install --frozen-lockfile'}
 
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'tpope/vim-fugitive' " the ultimate git helper
 Plug 'tpope/vim-surround'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 let mapleader = ' '
@@ -147,7 +150,21 @@ function! LightlineGitChanges()
 endfunction
 
 " ---------- coc.nvim config end ------------"
+" Show syntax highlighting groups for word under cursor
+nnoremap <silent> <leader>p :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
 
+set background=dark
+set termguicolors
+" colorscheme dracula
+colorscheme one
+let g:one_allow_italics = 1
+ 
 set encoding=UTF-8
 set mouse=a
 " Json file to show the quotes
@@ -296,10 +313,6 @@ let g:enable_italic_font = 1
 let g:indentLine_char = '|'
 
 set completeopt-=preview "Disable the preview window
-set background=dark
-colorscheme dracula
-set termguicolors
-
 set cursorline       "hilight the line of the cursor
 set timeoutlen=500 
 " Tab control
