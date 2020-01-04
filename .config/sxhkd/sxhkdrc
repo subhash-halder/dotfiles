@@ -6,3 +6,8 @@ super + shift + {p,n}
   cmus-remote -{r,n}
 super + ctrl + {p,n}
   cmus-remote -k {-,+}1m
+alt + ctrl + n
+  notes
+alt + ctrl + p
+  passmenu
+

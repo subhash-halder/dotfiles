@@ -36,5 +36,6 @@ alias nvimconfig="nvim $HOME/.config/nvim/init.vim"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 alias c="clear"
 alias vim="nvim"
+alias tmas="tmux attach-session -t "
 
 ulimit -n 2048

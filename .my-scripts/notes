@@ -1,0 +1,31 @@
+#!/bin/sh
+
+declare options=("todo
+public_note
+private_note
+")
+declare dmenuSelect=""
+declare fileName=""
+
+dmenuSelect=$(echo -e "${options[@]}" | dmenu -i -p "Notes")
+
+case "$dmenuSelect" in
+  todo)
+    fileName="$HOME/MyPrivateNotes/todo.md"
+  ;;
+  public_note)
+    fileName="$HOME/MyPublicNotes/index.md"
+  ;;
+  private_note)
+    fileName="$HOME/MyPrivateNotes/index.md"
+  ;;
+  *)
+    exit 1;
+  ;;
+esac
+
+if [ -f $fileName ]; then
+  st -e nvim $fileName
+else
+  notify-send "Please create a file $fileName"
+fi

@@ -28,6 +28,7 @@ Plug 'tpope/vim-fugitive' " the ultimate git helper
 Plug 'tpope/vim-surround'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'vimwiki/vimwiki'
 call plug#end()
 
 let mapleader = ' '
@@ -158,6 +159,8 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+let g:vimwiki_list = [{'path': '~/MyPublicNotes/', 'syntax': 'markdown', 'ext': '.md'}]
 
 set background=dark
 set termguicolors

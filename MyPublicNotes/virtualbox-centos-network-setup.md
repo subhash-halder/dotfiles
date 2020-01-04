@@ -1,13 +1,13 @@
-## Setup guide for centos network on virtualbox
+# Setup guide for centos network on virtualbox
 
-# network adapter 1
+## network adapter 1
   Attached to: NAT
-# network adapter 2
+## network adapter 2
   Attached to: Host-only Adapter
   Name : vboxnet0 (need to be created from file menu from virtualbox)
 
 
-# Setup on centos
+## Setup on centos
 
 [root@localhost ~]# nmcli dev status
 DEVICE  TYPE      STATE      CONNECTION 
@@ -41,20 +41,20 @@ DEVICE=enp0s3
 ONBOOT=yes
 
 [root@localhost network-scripts]# cat ifcfg-enp0s8
-TYPE="Ethernet"
-BOOTPROTO="static"
+TYPE=Ethernet
+BOOTPROTO=static
 IPADDR=192.168.56.10
-DEFROUTE="yes"
-PEERDNS="yes"
-PEERROUTES="yes"
-IPV4_FAILURE_FATAL="no"
-IPV6INIT="yes"
-IPV6_AUTOCONF="yes"
-IPV6_DEFROUTE="yes"
-IPV6_PEERDNS="yes"
-IPV6_PEERROUTES="yes"
-IPV6_FAILURE_FATAL="no"
-NAME="enp0s8"
-UUID="349177c9-b8c2-368d-a7d8-a75654e369b5"
-DEVICE="enp0s8"
-ONBOOT="yes"
+DEFROUTE=yes
+PEERDNS=yes
+PEERROUTES=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_PEERDNS=yes
+IPV6_PEERROUTES=yes
+IPV6_FAILURE_FATAL=no
+NAME=enp0s8
+UUID=349177c9-b8c2-368d-a7d8-a75654e369b5
+DEVICE=enp0s8
+ONBOOT=yes

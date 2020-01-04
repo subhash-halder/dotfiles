@@ -63,7 +63,7 @@ ZSH_THEME="gnzh"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git # vi-mode
+  git vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -98,21 +98,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-
-function tmx() {
-    tmux new-session \; \
-    split-window -v \; \
-    split-window -h \; \
-    select-pane -t 0 \; \
-    split-window -h \;
-}
-
-function tmuxDelDetached() {
-  tmux list-sessions | grep -E -v '\(attached\)$' | while IFS='\n' read line; do
-    tmux kill-session -t "${line%%:*}"
-  done
-}
-
 
 
 if [ -f ~/.zsh_path ]; then

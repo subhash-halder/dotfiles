@@ -1,18 +1,34 @@
 #!/bin/bash
 
 dte(){
-  dte="$(date +"%A, %b %d   %l:%M%p")"
-  echo -e " $dte"
+  dte="$(date +"%a, %b %d %l:%M%p")"
+  echo -e "  $dte"
 }
 
 upd(){
   upd=`checkupdates | wc -l`
-  echo -e "⟳ $upd updates"
+  echo -e "⟳  $upd updates"
 }
 
 mem(){
-  mem=`free | awk '/Mem/ {printf "%d MiB/%d MiB\n", $3 / 1024.0, $2 / 1024.0 }'`
-  echo -e "$mem"
+  mem=`free | awk '/Mem/ {printf "%d MB/%d MB\n", $3 / 1024.0, $2 / 1024.0 }'`
+  echo -e "  $mem"
+}
+
+hdd() {
+  hdd=`df -h | grep '/home' | awk '{print $5 " - " $4}'`
+  echo -e "  $hdd"
+}
+
+wifi(){
+  INTERFACE="${BLOCK_INSTANCE:-wlp5s0}"
+
+  [[ ! -d /sys/class/net/${INTERFACE}/wireless ]] ||
+    [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]] && exit
+
+
+  echo "  $(grep $INTERFACE /proc/net/wireless | awk '{ print int($3 * 100 / 100) }')%"
+
 }
 
 cpu(){
@@ -22,7 +38,7 @@ cpu(){
   read cpu a b c idle rest < /proc/stat
   total=$((a+b+c+idle))
   cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-  echo -e " $cpu%"
+  echo -e "  $cpu%"
 }
 
-xsetroot -name "  $(wifi)  $(battery)  $(cpu)   $(memory)  $(dte)"
+xsetroot -name "$(wifi)  $(battery) $(cpu) $(hdd) $(mem) $(dte)"
