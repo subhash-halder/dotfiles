@@ -32,6 +32,10 @@ if [ -f $HOME/.git-compilation.bash ]; then
   . $HOME/.git-compilation.bash
 fi
 
+# Use bash-completion, if available
+[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+    . /usr/share/bash-completion/bash_completion
+
 if [ -d /usr/share/fzf/ ]; then
   source /usr/share/fzf/completion.bash
   source /usr/share/fzf/key-bindings.bash

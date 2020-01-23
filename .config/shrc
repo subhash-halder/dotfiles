@@ -1,7 +1,7 @@
 export EDITOR="nvim"
 export VISUAL="nvim"
-export TERMINAL="termite"
-export BROWSER="qutebrowser"
+export TERMINAL="st"
+export BROWSER="firefox"
 export READER="zathura"
 export FILE="vifm"
 

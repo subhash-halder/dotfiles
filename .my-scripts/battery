@@ -7,7 +7,7 @@ if [ -z "$bat_status" ]; then
 fi
 charging_symbol=''
 battery_symbol=''
-color=''
+color='\x01'
 charging_status=$(echo $bat_status | awk '{print $3}')
 battery_percent=$(echo $bat_status | awk '{print $4}')
 battery_time_remain=$(echo $bat_status | awk '{print $5}' | awk -F: '{print $1":"$2}')
@@ -16,9 +16,15 @@ if [ $charging_status = 'Charging' ]; then
   charging_symbol='ﮣ'
 fi
 
+
 if [ $battery_percent -lt 20 ]; then 
   battery_symbol=''
   color='\x04'
+  if [ $charging_status = 'Charging' ]; then
+    dunstify --close=10000001
+  else
+    dunstify "Battery low" -r 10000001 -u critical -i battery-level-20-symbolic.symbolic
+  fi
 elif [ $battery_percent -lt 40 ]; then
   color='\x03'
   battery_symbol=''
