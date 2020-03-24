@@ -4,12 +4,16 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'dracula/vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'rakr/vim-one'
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'Yggdroot/indentLine'
 Plug 'junegunn/fzf.vim'
-Plug 'fatih/vim-go'
+Plug 'mattn/emmet-vim'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'rust-lang/rust.vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx' ] }
@@ -30,8 +34,8 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'vimwiki/vimwiki'
 call plug#end()
-
 let mapleader = ' '
+
 " ---------- coc.nvim config start ------------"
 " coc config
 " if hidden is not set, TextEdit might fail.
@@ -88,6 +92,8 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
+" stop interfering vim-go with coc
+nmap <S-k> <Nop>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -118,39 +124,32 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 
 augroup fmt
   autocmd!
-  autocmd BufWritePre *{.go,.rs,.c,.cpp} Format
+  autocmd BufWritePre *{.go,.rs,.c,.cpp} :call CocActionAsync('format')
   autocmd BufWritePre *{.go,.rs,.c,.cpp} OR
 augroup END
 
 
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-"set laststatus=2
-"set statusline+=%{coc#status()}%{get(b:,'coc_current_function','')}
-"set statusline+=%{get(g:,'coc_git_status','')}%{get(b:,'coc_git_status','')}%{get(b:,'coc_git_blame','')}
-
-let g:lightline = {
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'gitbranch', 'gitchanges', 'readonly', 'filename', 'modified', 'cocstatus' ] ]
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'LightlineGitBranch',
-  \   'gitchanges': 'LightlineGitChanges',
-  \   'cocstatus': 'coc#status',
-  \ }
-\ }
-
-function! LightlineGitBranch() 
-  let status = get(g:, 'coc_git_status', '')
-  return  status
-endfunction
-
-function! LightlineGitChanges()
-  let status = get(b:, 'coc_git_status', '')
-  return  status
-endfunction
-
 " ---------- coc.nvim config end ------------"
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='deus'
+
+let g:go_highlight_structs = 1 
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_fmt_autosave = 0
+let g:go_doc_keywordprg_enabled = 0
+
+let g:prettier#autoformat = 0
+
 " Show syntax highlighting groups for word under cursor
 nnoremap <silent> <leader>p :call <SID>SynStack()<CR>
 function! <SID>SynStack()
@@ -218,22 +217,30 @@ if has('conceal')
 endif
 " Using floating windows of Neovim to start fzf
 if has('nvim')
-  let $FZF_DEFAULT_OPTS .= ' --border --margin=0,2'
+  function! CreateCenteredFloatingWindow()
+    let width = min([&columns - 4, max([80, &columns - 20])])
+    let height = min([&lines - 4, max([20, &lines - 10])])
+    let top = ((&lines - height) / 2) - 1
+    let left = (&columns - width) / 2
+    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
 
-  function! FloatingFZF()
-    let width = float2nr(&columns * 0.9)
-    let height = float2nr(&lines * 0.6)
-    let opts = { 'relative': 'editor',
-               \ 'row': (&lines - height) / 2,
-               \ 'col': (&columns - width) / 2,
-               \ 'width': width,
-               \ 'height': height }
-
-    let win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
-    call setwinvar(win, '&winhighlight', 'NormalFloat:Normal')
+    let top = "╭" . repeat("─", width - 2) . "╮"
+    let mid = "│" . repeat(" ", width - 2) . "│"
+    let bot = "╰" . repeat("─", width - 2) . "╯"
+    let lines = [top] + repeat([mid], height - 2) + [bot]
+    let s:buf = nvim_create_buf(v:false, v:true)
+    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+    call nvim_open_win(s:buf, v:true, opts)
+    set winhl=Normal:Floating
+    let opts.row += 1
+    let opts.height -= 2
+    let opts.col += 2
+    let opts.width -= 4
+    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+    au BufWipeout <buffer> exe 'bw '.s:buf
   endfunction
+  let g:fzf_layout = { 'window': 'call CreateCenteredFloatingWindow()' }
 
-  let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 endif
 
 autocmd! FileType fzf
