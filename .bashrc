@@ -6,6 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
+alias vifm="$HOME/.config/vifm/scripts/vifmrun"
 shopt -s autocd
 complete -cf sudo
 # PS1='[\u@\h \W]\$ '
