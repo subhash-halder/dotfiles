@@ -1,22 +1,13 @@
 {
   "tsserver.enableJavascript":false,
   "eslint.autoFixOnSave":true,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings": {
+    "v": "open:vsplit",
+    "<cr>": ["expandable?", "expand", "open"]
+  },
   "languageserver": {
-    "flow": {
-      "command": "npx",
-      "args": ["flow", "lsp"],
-      "filetypes": ["javascript", "javascriptreact", "javascript.jsx"],
-      "initializationOptions": {},
-      "requireRootPattern": true,
-      "settings": {},
-      "rootPatterns": [".flowconfig"]
-    },
-    "golang": {
-      "command": "gopls",
-      "args": ["-mode=stdio"],
-      "rootPatterns": ["go.mod"],
-      "filetypes": ["go"]
-    },
     "bash": {
       "command": "bash-language-server",
       "args": ["start"],
