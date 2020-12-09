@@ -1,9 +1,9 @@
 {
-  "tsserver.enableJavascript":false,
+  "tsserver.enableJavascript":true,
   "eslint.autoFixOnSave":true,
   "explorer.icon.enableNerdfont": true,
   "explorer.previewAction.onHover": false,
-  "explorer.keyMappings": {
+  "explorer.keyMappings.global": {
     "v": "open:vsplit",
     "<cr>": ["expandable?", "expand", "open"]
   },

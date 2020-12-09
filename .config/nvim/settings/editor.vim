@@ -35,17 +35,16 @@ command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 map <leader>ev :e! ~/.config/nvim/init.vim<cr>
 
 " Strict mode to make vim habit better
-nnoremap <Left> :echo "No left for you!"<CR>
-nnoremap <Right> :echo "No Right for you!"<CR>
-nnoremap <Up> :echo "No Up for you!"<CR>
-nnoremap <Down> :echo "No Down for you!"<CR>
+" nnoremap <Left> :echo "No left for you!"<CR>
+" nnoremap <Right> :echo "No Right for you!"<CR>
+" nnoremap <Up> :echo "No Up for you!"<CR>
+" nnoremap <Down> :echo "No Down for you!"<CR>
+" 
+" inoremap <Left> <C-o>:echo "No left for you!"<CR>
+" inoremap <Right> <C-o>:echo "No Right for you!"<CR>
+" inoremap <Up> <C-o>:echo "No Up for you!"<CR>
+" inoremap <Down> <C-o>:echo "No Down for you!"<CR>
 
-inoremap <Left> <C-o>:echo "No left for you!"<CR>
-inoremap <Right> <C-o>:echo "No Right for you!"<CR>
-inoremap <Up> <C-o>:echo "No Up for you!"<CR>
-inoremap <Down> <C-o>:echo "No Down for you!"<CR>
-
-" Using tab shortcut
 nnoremap <leader>k :bnext<CR>
 nnoremap <leader>j :bprevious<CR>
 nnoremap <C-x> :bdelete<CR>
@@ -72,6 +71,16 @@ set number! relativenumber!    " toggle hybrid line numbersk
 " for transparancy
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
+
+" Better tabbing
+vnoremap < <gv
+vnoremap > >gv
+
+" Use alt + hjkl to resize windows
+nnoremap <M-j>    :resize -2<CR>
+nnoremap <M-k>    :resize +2<CR>
+nnoremap <M-h>    :vertical resize -2<CR>
+nnoremap <M-l>    :vertical resize +2<CR>
 
 if has('nvim')
   "terminal

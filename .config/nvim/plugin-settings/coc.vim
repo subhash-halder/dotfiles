@@ -18,6 +18,7 @@ let g:coc_global_extensions = [
     \ 'coc-go',
     \ 'coc-rls',
     \ 'coc-clangd',
+    \ 'coc-cmake',
     \ 'coc-java',
     \ 'coc-tsserver',
     \ 'coc-flow',
