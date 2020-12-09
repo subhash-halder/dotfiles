@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+getPass() {
+  find $HOME/.password-store/ -type f | grep -ivE '\.gpg-id|\.git' | sed "s|$HOME/.password-store/||g" | sed 's|.gpg||g' | dmenu -l 10 -p "Password: " | xargs -r pass -c 
+}
+
+setWifi() {
+  nmcli device wifi rescan && nmcli device wifi list | sed '1d' | awk '{if ($1 == "*") print $3, "*"; else print $2}' | dmenu -l 10 -p "Wifi: " | awk '{print $1}' | xargs -r nmcli device wifi connect
+}
+
+viewFonts() {
+  fc-list | awk '{print $1}' | sed 's/://g' | dmenu -l 20 -p "Fonts: " | xargs -r display
+}
+
+openTmux() {
+  tmux ls | dmenu -l 10 -p "Tmux: " | awk '{print $1}' | sed 's/://g' | xargs -r st -e tmux attach-session -t
+}
+
+
+
+if declare -f "$1" > /dev/null
+then
+  echo "called"
+  "$@"
+ else
+  cmd=$(declare -F | awk '{print $3}' | dmenu -l 20 -p "Available command: ")
+  dmenu-scripts openTmux
+fi

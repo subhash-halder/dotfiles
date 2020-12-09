@@ -1,0 +1,50 @@
+#!/bin/env bash
+
+# pass the connection name like: record-screen HDMI1
+
+
+videoFileName="recording-$(date | sed 's/\s/-/g').mp4"
+
+videoFilePath="${HOME}/Documents/ScreenRecordings/"
+
+for p in $(pgrep -t $(cat /sys/class/tty/tty0/active));
+do 
+    d=$(awk -v RS='\0' -F= '$1=="DISPLAY" {print $2}' /proc/$p/environ 2>/dev/null); 
+    [[ -n $d ]] && break; 
+done;
+
+if [ -z $1 ]; then
+  display="eDP1"
+else
+  display=$1
+fi
+
+connected=$(xrandr | grep -i "^${display} connected")
+
+echo $connected
+
+if [ -z "$connected" ]; then
+  echo "Not able to get connected display"
+  exit 1
+fi
+
+resolution="$(echo $connected | sed -n -r 's/^.*\s([0-9]+x[0-9]+).*$/\1/p')"
+
+echo $resolution
+
+adjX="$(echo $connected | sed -n -r 's/^.*(\+[0-9]+)\+[0-9]+.*$/\1/p')"
+
+adjY="$(echo $connected | sed -n -r 's/^.*\+[0-9]*\+([0-9]+).*$/\1/p')"
+
+echo $connected
+echo $adjY
+echo $adjX
+
+
+if [ ! -d $videoFilePath ]; then
+  mkdir -p $videoFilePath
+fi
+
+ffmpeg -video_size $resolution -framerate 25 -f x11grab -i ${d}.0${adjX},0${adjY} -f pulse -ac 2 -i default "${videoFilePath}${videoFileName}"
+
+notify-send "Screen Recording Success" "${videoFilePath}${videoFileName}"

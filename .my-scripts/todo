@@ -1,0 +1,4 @@
+#!/bin/env bash
+
+cd ~/vimwiki/private/ && nvim todo.md
+

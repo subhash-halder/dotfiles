@@ -2,22 +2,22 @@
 
 dte(){
   dte="$(date +"%a, %b %d %l:%M%p")"
-  echo -e "  $dte"
+  echo -e " 📆 $dte"
 }
 
 upd(){
   upd=`checkupdates | wc -l`
-  echo -e "⟳  $upd updates"
+  echo -e " 📦 $upd updates"
 }
 
 mem(){
   mem=`free | awk '/Mem/ {printf "%d MB/%d MB\n", $3 / 1024.0, $2 / 1024.0 }'`
-  echo -e "  $mem"
+  echo -e " 💾 $mem"
 }
 
 hdd() {
   hdd=`df -h | grep '/home' | awk '{print $5 " - " $4}'`
-  echo -e "  $hdd"
+  echo -e " 💽 $hdd"
 }
 
 wifi(){
@@ -27,7 +27,7 @@ wifi(){
     [[ "$(cat /sys/class/net/$INTERFACE/operstate)" = 'down' ]] && exit
 
 
-  echo "  $(grep $INTERFACE /proc/net/wireless | awk '{ print int($3 * 100 / 100) }')%"
+  echo " 📡 $(grep $INTERFACE /proc/net/wireless | awk '{ print int($3 * 100 / 100) }')%"
 
 }
 
@@ -38,7 +38,7 @@ cpu(){
   read cpu a b c idle rest < /proc/stat
   total=$((a+b+c+idle))
   cpu=$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))
-  echo -e "  $cpu%"
+  echo -e " 💻 $cpu%"
 }
 
-xsetroot -name "$(wifi)  $(battery) $(cpu) $(hdd) $(mem) $(dte)"
+xsetroot -name "$(wifi)  $(battery) $(cpu) $(hdd) $(mem) $(dte)"
