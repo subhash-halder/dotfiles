@@ -41,3 +41,16 @@ if [ -d /usr/share/fzf/ ]; then
   source /usr/share/fzf/completion.bash
   source /usr/share/fzf/key-bindings.bash
 fi
+
+if [ -f /usr/bin/aws_bash_completer ]; then
+  source /usr/bin/aws_bash_completer
+fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/subhash/google-cloud-sdk/path.bash.inc' ]; then . '/home/subhash/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/subhash/google-cloud-sdk/completion.bash.inc' ]; then . '/home/subhash/google-cloud-sdk/completion.bash.inc'; fi
+
+
+eval "$(starship init bash)"
