@@ -10,10 +10,17 @@ export HISTSIZE=100000
 
 export TERM="st-256color"
 
+
 # dwm window manager fix for java program
 export _JAVA_AWT_WM_NONREPARENTING=1
 
 export ANDROID_HOME=$HOME/Android/Sdk
+export JAVA_HOME=/usr/lib/jvm/default
+
+
+export PATH=$PATH:/opt/esp-open-sdk/xtensa-lx106-elf/bin
+
+export PATH=$PATH:$JAVA_HOME
 export PATH=$PATH:$HOME/.npm-global/bin
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/Documents/work/go/bin
@@ -21,7 +28,11 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:$HOME/.my-scripts
+export PATH=$PATH:/opt/apache-maven/bin
 export PATH=$PATH:$HOME/bin
+
+export DENO_INSTALL="/home/subhash/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
 
 export GOPATH=$HOME/Documents/work/go
 export GO111MODULE="on"
