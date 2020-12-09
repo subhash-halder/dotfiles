@@ -7,3 +7,7 @@
 # done
 # i3
 dwm 2> ~/.dwm.log
+# disable the bell sound
+xset b off
+# disable monitor blacking off after some time
+# xset s off -dpms
