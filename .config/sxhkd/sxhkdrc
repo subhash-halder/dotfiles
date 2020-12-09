@@ -9,5 +9,11 @@ super + ctrl + {p,n}
 alt + ctrl + n
   notes
 alt + ctrl + p
-  passmenu
+  dmenu-scripts getPass
+alt + ctrl + w
+  dmenu-scripts setWifi
+alt + ctrl + d
+  dmenu-scripts
 
+Print
+  dmenu-scripts screenshot
