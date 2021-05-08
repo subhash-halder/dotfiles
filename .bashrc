@@ -7,6 +7,7 @@
 
 alias ls='ls --color=auto'
 alias vifm="$HOME/.config/vifm/scripts/vifmrun"
+alias killCurrentBash="sudo kill -9 $(echo $$ | awk '{print $1}')"
 shopt -s autocd
 complete -cf sudo
 # PS1='[\u@\h \W]\$ '

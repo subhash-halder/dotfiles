@@ -19,9 +19,10 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'rust-lang/rust.vim'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx' ] }
+" Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx' ] }
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'elzr/vim-json', { 'for': 'json' }
 Plug 'tpope/vim-fugitive' " the ultimate git helper
