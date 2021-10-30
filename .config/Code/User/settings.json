@@ -1,0 +1,137 @@
+{
+    "go.useLanguageServer": true,
+    "editor.minimap.enabled": false,
+    "workbench.activityBar.visible": true,
+    "workbench.statusBar.visible": true,
+    "breadcrumbs.enabled": false,
+    "workbench.colorTheme": "Atom One Dark",
+    "vim.enableNeovim": true,
+    "vim.neovimPath": "/usr/bin/nvim",
+    "window.menuBarVisibility": "toggle",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "<leader>",
+                "j"
+            ],
+            "commands": [
+                ":tabprevious"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "b"
+            ],
+            "commands": [
+                "workbench.view.explorer"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "k"
+            ],
+            "commands": [
+                ":tabnext"
+            ]
+        },
+        {
+            "before": [
+                "<C-q>",
+            ],
+            "commands": [
+                ":q"
+            ]
+        },
+        {
+            "before": [
+                "<C-x>",
+            ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
+        {
+            "before": [
+                "<C-h>"
+            ],
+            "commands": [
+                "workbench.action.focusLeftGroup"
+            ]
+        },
+        {
+            "before": [
+                "<C-l>"
+            ],
+            "commands": [
+                "workbench.action.focusRightGroup"
+            ]
+        },
+        {
+            "before": [
+                "<C-j>"
+            ],
+            "commands": [
+                "workbench.action.focusBelowGroup"
+            ]
+        },
+        {
+            "before": [
+                "<C-k>"
+            ],
+            "commands": [
+                "workbench.action.focusAboveGroup"
+            ]
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
+        },
+    ],
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-f>": false,
+        "<C-b>": false
+    },
+    "vim.leader": "<space>",
+    "editor.lineNumbers": "relative",
+    "window.zoomLevel": 0,
+    "editor.fontFamily": "'FuraCode Nerd Font', 'MesloLGS Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Siji'",
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact"
+    ],
+    "C_Cpp.updateChannel": "Insiders",
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    "cmake.configureOnOpen": true,
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+    "vscode-neovim.neovimInitVimPaths.linux": "/home/subhash/.config/nvim/init.vim",
+    "editor.fontLigatures": true,
+    "workbench.iconTheme": "material-icon-theme",
+    "javascript.suggest.autoImports": false,
+    "typescript.suggest.autoImports": false,
+    "editor.fontSize": 12,
+    "debug.console.fontSize": 12,
+    "markdown.preview.fontSize": 12,
+    "terminal.integrated.fontSize": 12,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "go.toolsManagement.autoUpdate": true,
+    "files.exclude": {
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+}
