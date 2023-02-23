@@ -1,12 +1,18 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+source ~/.zsh_profile
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
+
+# configure starship
+eval "$(starship init zsh)"
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="gnzh"
+# ZSH_THEME="gnzh"
 # ZSH_THEME="powerlevel9k/powerlevel9k"
 # POWERLEVEL9K_MODE="nerdfont-complete"
 # POWERLEVEL9K_DISABLE_RPROMPT=true
@@ -108,3 +114,10 @@ fi
 # if command -v tmux>/dev/null; then
 #   [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 # fi
+#
+# FZF keybinding and completion
+
+if [ -d /opt/homebrew/Cellar/fzf/0.37.0/shell/ ]; then
+  source /opt/homebrew/Cellar/fzf/0.37.0/shell/key-bindings.zsh
+  source /opt/homebrew/Cellar/fzf/0.37.0/shell/completion.zsh
+fi

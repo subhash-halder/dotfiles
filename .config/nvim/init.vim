@@ -1,9 +1,0 @@
-source $HOME/.config/nvim/plugin-settings/plug.vim
-source $HOME/.config/nvim/settings/editor.vim
-source $HOME/.config/nvim/settings/theme.vim
-source $HOME/.config/nvim/plugin-settings/coc.vim
-source $HOME/.config/nvim/plugin-settings/nerd-tree.vim
-source $HOME/.config/nvim/plugin-settings/fzf.vim
-source $HOME/.config/nvim/plugin-settings/prettier.vim
-source $HOME/.config/nvim/plugin-settings/vimwiki.vim
-source $HOME/.config/nvim/plugin-settings/coc-explorer.vim
