@@ -26,10 +26,10 @@ format = " [$user]($style) "
 disabled = false
 show_always = true
 
-[battery]
-disabled = false
-show_always = true
-
+# [battery]
+# disabled = false
+# show_always = true
+#
 
 
 

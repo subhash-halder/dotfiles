@@ -103,7 +103,7 @@
     "vim.leader": "<space>",
     "editor.lineNumbers": "relative",
     "window.zoomLevel": 0,
-    "editor.fontFamily": "'FuraCode Nerd Font', 'MesloLGS Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Siji'",
+    "editor.fontFamily": "'inconsolata nerd font mono', 'FuraCode Nerd Font', 'MesloLGS Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Siji'",
     "eslint.validate": [
         "javascript",
         "javascriptreact",
@@ -121,7 +121,7 @@
     "workbench.iconTheme": "material-icon-theme",
     "javascript.suggest.autoImports": false,
     "typescript.suggest.autoImports": false,
-    "editor.fontSize": 12,
+    "editor.fontSize": 14,
     "debug.console.fontSize": 12,
     "markdown.preview.fontSize": 12,
     "terminal.integrated.fontSize": 12,
