@@ -195,5 +195,36 @@
         "key": "ctrl+n",
         "command": "selectNextSuggestion",
         "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
+    },
+    {
+      "key": "ctrl+\\",
+      "command": "workbench.action.terminal.toggleTerminal",
+      "when": "terminal.active"
+    },
+    {
+        "command": "vscode-neovim.send",
+        "key": "ctrl+s",
+        "when": "editorTextFocus && neovim.mode != insert",
+        "args": "<C-s>"
+    },
+    {
+      "key": "ctrl+l",
+      "command": "workbench.action.navigateRight",
+      "when": "!editorTextFocus"
+    },
+    {
+      "key": "ctrl+k",
+      "command": "workbench.action.navigateUp",
+      "when": "!editorTextFocus"
+    },
+    {
+      "key": "ctrl+j",
+      "command": "workbench.action.navigateDown",
+      "when": "!editorTextFocus"
+    },
+    {
+      "key": "ctrl+h",
+      "command": "workbench.action.navigateLeft",
+      "when": "!editorTextFocus"
     }
 ]

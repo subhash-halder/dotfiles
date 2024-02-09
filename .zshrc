@@ -3,6 +3,10 @@
 
 source ~/.zsh_profile
 
+if [ -f ~/.zsh_private ]; then
+  source ~/.zsh_private
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 
@@ -105,6 +109,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 
+alias personal="tmuxifier load-session personal"
+alias highlevel="tmuxifier load-session highlevel"
 
 if [ -f ~/.zsh_path ]; then
     . ~/.zsh_path
@@ -121,3 +127,5 @@ if [ -d /opt/homebrew/Cellar/fzf/0.37.0/shell/ ]; then
   source /opt/homebrew/Cellar/fzf/0.37.0/shell/key-bindings.zsh
   source /opt/homebrew/Cellar/fzf/0.37.0/shell/completion.zsh
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

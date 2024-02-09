@@ -20,6 +20,8 @@ dracula.draw.blood(c, {
 ## Remove it to not load settings done via the GUI.
 config.load_autoconfig()
 
+config.set("colors.webpage.darkmode.enabled", True)
+
 ## Aliases for commands. The keys of the given dictionary are the
 ## aliases, while the values are the commands they map to.
 ## Type: Dict

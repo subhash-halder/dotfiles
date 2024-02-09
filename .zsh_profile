@@ -1,3 +1,13 @@
+
+include_path () {
+  if [ -d $1 ]; then
+    export PATH="$1":"$PATH"
+  fi
+}
+
+include_path /opt/homebrew/opt/icu4c/bin
+include_path /opt/homebrew/opt/icu4c/sbin
+
 export PATH="/Users/subhash/Library/Python/3.9/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
@@ -7,8 +17,26 @@ export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 export PATH="$HOME/.docker/bin:$PATH"
 
+if [ -d "/Users/subhash/.cargo/bin" ]; then 
+  export PATH=$PATH:"/Users/subhash/.cargo/bin"
+fi
+
+if [ -d "$HOME/.rd/bin" ]; then
+  export PATH=$PATH:"$HOME/.rd/bin"
+fi
+
 if [ -d "/opt/homebrew/opt/mysql-client/bin" ]; then
-  export PATH=/opt/homebrew/opt/mysql-client/bin:$PATH
+  export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+fi
+
+if [ -d "/opt/homebrew/opt/bison/bin" ]; then 
+  export PATH="/opt/homebrew/opt/bison/bin:$PATH"
+fi
+
+if [ -d "/opt/homebrew/opt/flex/bin" ]; then
+  export PATH="/opt/homebrew/opt/flex/bin:$PATH"
+  export LDFLAGS="-L/opt/homebrew/opt/flex/lib"
+  export CPPFLAGS="-I/opt/homebrew/opt/flex/include"
 fi
 
 if [ -d "/opt/homebrew/opt/ruby/bin" ]; then
